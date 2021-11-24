@@ -1,5 +1,4 @@
-# Skill4fun_todo_app
-Gergő ToDo app
+Gergő's TODO application.
 
-## Opciók kiiratása
+## Alap funkciók kiiratása
 Következőképp indítható: 'node app.js'
