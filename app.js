@@ -1,29 +1,14 @@
 import Operations from "./Operations.js";
 
-const rawtodosArr = Operations.rawtodoList;
-const orderedTodoListArr = new Operations;
-
-
-// console.log(rawtodosArr);
-
-
+const myTodoList = new Operations;
 const args = process.argv.slice(2);
 
 
 if (args.includes("-l")) {
-    console.log(orderedTodoListArr.printTodoList());
+    myTodoList.printOrderedTodoList();
 
 } else {
-    console.log(`$ todo
-
-    Parancssori Todo applikáció
-    =============================
-
-    Parancssori argumentumok:
-    -l   Kilistázza a feladatokat
-    -a   Új feladatot ad hozzá
-    -r   Eltávolít egy feladatot
-    -c   Teljesít egy feladatot`)
+    myTodoList.printHelp();
 }
 
 /*
