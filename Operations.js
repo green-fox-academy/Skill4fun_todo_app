@@ -1,11 +1,15 @@
 import fs from 'fs';
 
+import TodoLists from "./TodoLists.js";
+
 export default class Operations {
 
-    static rawtodoList = fs.readFileSync('./data/todos.json', 'utf-8')
+    list = new TodoLists;
+    #rawtodoList = fs.readFileSync('./data/todos.json', 'utf-8')
+    #userGuide = fs.readFileSync('help.txt', 'utf-8')
 
-    printOrderedTodoList(rawtodoList = fs.readFileSync('./data/todos.json', 'utf-8')) {
-        let todoListArr = JSON.parse(rawtodoList)
+    printOrderedTodoList(listNumber = 1) {
+        let todoListArr = JSON.parse(this.list[listNumber])
         for (let i = 0; i < todoListArr.length; i++) {
             todoListArr[i] = `${i + 1} - ${todoListArr[i]}`;
         }
@@ -13,10 +17,16 @@ export default class Operations {
     }
 
     printHelp() {
-        const userGuide = fs.readFileSync('help.txt', 'utf-8')
-        return console.log(userGuide);
+        return console.log(this.#userGuide);
     }
 
+    checkListEmpty(listNumber = 1) {
+        if (this.list[listNumber].length == 0) {
+            return console.log("\n Nincs több feladatod mára.")
+        } else {
+            return console.log("\n Még vannak feladataid")
+        }
+    }
 
 }
 

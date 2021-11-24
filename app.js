@@ -1,5 +1,6 @@
 import Operations from "./Operations.js";
 
+
 const myTodoList = new Operations;
 const args = process.argv.slice(2);
 
@@ -10,6 +11,9 @@ if (args.includes("-l")) {
 } else {
     myTodoList.printHelp();
 }
+
+myTodoList.checkListEmpty(2);
+
 
 /*
 const json = '{"result":true, "count":42}';
