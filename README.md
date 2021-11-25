@@ -3,9 +3,9 @@ Gergő's TODO application.
 
 Parancssori Todo applikáció
 =============================
-## Alap funkciók kiiratása
-Következőképp indítható: 'node app.js'
+Indítás: 'node app.js'
 
+## Alap funkciók kiiratása
 
     Parancssori argumentumok:
     -l   Kilistázza a feladatokat
