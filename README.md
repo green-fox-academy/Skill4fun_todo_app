@@ -41,6 +41,7 @@ Például: node app.js -a -2 "Ez az új feladat"
 ##  -r   Eltávolít egy feladatot 
 
 Harmadik 'number' argumentum használata:
+
         Feladat eltávolításakor harmadik argumentumként adjuk meg törlendő feladatot.
 
          > Amennyiben második argumentumként adjuk meg törlendő feladatot, 
