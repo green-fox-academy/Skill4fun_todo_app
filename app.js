@@ -4,6 +4,7 @@ const todoListContainer = new TodoLists;
 const numberOfLists = Object.entries(todoListContainer).length;
 const myTodoList = new Operations;
 let newItemContent = '';
+let indexOfItemToRemove = '';
 
 const args = process.argv.slice(2);
 let argNumber = 1;
@@ -21,6 +22,13 @@ function chooseList(listNumber = 1) {
         }
         myTodoList.writeNewItemtoAList(listNumber, newItemContent);
 
+    } else if (args.includes("-r")) {
+        if (args[2] == null) {
+            indexOfItemToRemove = args[1];
+        } else {
+            indexOfItemToRemove = args[2];
+        }
+        myTodoList.removeItemFromAList(listNumber, indexOfItemToRemove);
     } else {
         myTodoList.printHelp();
     }
