@@ -10,10 +10,12 @@ let argNumber = 1;
 function chooseList(listNumber = 1) {
     if (args.includes("-l")) {
         myTodoList.printOrderedTodoList(listNumber);
+        myTodoList.checkListEmpty(listNumber);
+    } else if (args.includes("-a")) {
+        myTodoList.writeNewItemtoAList(listNumber);
     } else {
         myTodoList.printHelp();
     }
-    myTodoList.checkListEmpty(listNumber);
 }
 
 
@@ -22,7 +24,7 @@ function isSecondNumberArgAdded() {
         if (parseInt(args[1].slice(1)) <= numberOfLists) {
             argNumber = parseInt(args[1].slice(1));
         } else { console.log(`\nNem létező listát keresel, túl nagy számot adtál meg második argumentumként! \nAktuális ToDo-listák száma: ${numberOfLists} \n\nHelyette itt van az 1-es lista:\n`) }
-    } else { console.log("\nNem számot adtál meg második argumentumként!\nHelyette itt van az 1-es lista:\n") }
+    } else if (args.length > 1) { console.log("\nNem számot adtál meg második argumentumként!\nHelyette itt van az 1-es lista:\n") }
 }
 
 isSecondNumberArgAdded();
