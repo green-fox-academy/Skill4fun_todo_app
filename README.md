@@ -28,6 +28,7 @@ Például: node app.js -l -2
 
 Harmadik 'string' argumentum használata:
         Új feladat hozzáadásakor harmadik argumentumként 
+        
         " "-között adjuk meg rögzítendő feladatot.
 
          > Amennyiben második argumentumként adjuk meg a rögzítendő feladatot, 
