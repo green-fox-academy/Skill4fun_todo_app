@@ -3,6 +3,7 @@ import TodoLists from "./TodoLists.js";
 const todoListContainer = new TodoLists;
 const numberOfLists = Object.entries(todoListContainer).length;
 const myTodoList = new Operations;
+let newItemContent = '';
 
 const args = process.argv.slice(2);
 let argNumber = 1;
@@ -11,8 +12,15 @@ function chooseList(listNumber = 1) {
     if (args.includes("-l")) {
         myTodoList.printOrderedTodoList(listNumber);
         myTodoList.checkListEmpty(listNumber);
+
     } else if (args.includes("-a")) {
-        myTodoList.writeNewItemtoAList(listNumber);
+        if (args[2] == null) {
+            newItemContent = args[1]
+        } else {
+            newItemContent = args[2];
+        }
+        myTodoList.writeNewItemtoAList(listNumber, newItemContent);
+
     } else {
         myTodoList.printHelp();
     }
@@ -23,12 +31,13 @@ function isSecondNumberArgAdded() {
     if (args.length > 1 && args[1] % 1 == 0) {
         if (parseInt(args[1].slice(1)) <= numberOfLists) {
             argNumber = parseInt(args[1].slice(1));
-        } else { console.log(`\nNem létező listát keresel, túl nagy számot adtál meg második argumentumként! \nAktuális ToDo-listák száma: ${numberOfLists} \n\nHelyette itt van az 1-es lista:\n`) }
-    } else if (args.length > 1) { console.log("\nNem számot adtál meg második argumentumként!\nHelyette itt van az 1-es lista:\n") }
+        } else { console.log(`\nNem létező listát keresel, túl nagy számot adtál meg második argumentumként! \nAktuális ToDo-listák száma: ${numberOfLists} \n`) }
+    } else if (args.length > 1) { console.log("\nNem adtad meg második argumentumként a Todo lista sorszámát!\n") }
 }
 
 isSecondNumberArgAdded();
 chooseList(argNumber);
+
 
 
 

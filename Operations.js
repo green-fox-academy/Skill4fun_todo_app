@@ -7,10 +7,6 @@ export default class Operations {
     // #rawtodoList = fs.readFileSync('./data/todos.json', 'utf-8')
     #userGuide = fs.readFileSync('help.txt', 'utf-8')
 
-
-
-
-
     checkListEmpty(listNumber = 1) {
         if (this.list[listNumber].length == 0) {
             return console.log("\n Ezen a listán nincs több feladatod mára.")
@@ -23,7 +19,7 @@ export default class Operations {
             for (let i = 0; i < todoListArr.length; i++) {
                 todoListArr[i] = `${i + 1} - ${todoListArr[i]}`;
             }
-            return console.log(todoListArr.join("\n"))
+            return console.log(`A(z) ${listNumber}. számú Todo lista elemei:\n${todoListArr.join("\n")}`)
         }
     }
 
@@ -31,14 +27,23 @@ export default class Operations {
         return console.log(this.#userGuide);
     }
 
-    // writeNewItemtoAList(listNumber = 1) {
-    //     let currentTodoListArr = JSON.parse(this.list[listNumber]);
-    //     currentTodoListArr.push('ezegy uj programpont')
 
-    //     return fs.writeFile("./data/todos.json", JSON.stringify(currentTodoListArr))
-    // }
+    writeNewItemtoAList(listNumber = 1, message) {
+        if (this.list[listNumber].length == 0) {
+            let currentTodoListArr = [];
+            currentTodoListArr.push(message)
+            let updatedRawTodoList = JSON.stringify(currentTodoListArr);
+            console.log(`A(z) ${listNumber}. számú listára mentettük az alábbi új elemet:\n${message}`)
+            return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
 
-
+        } else {
+            let currentTodoListArr = JSON.parse(this.list[listNumber]);
+            currentTodoListArr.push(message)
+            let updatedRawTodoList = JSON.stringify(currentTodoListArr);
+            console.log(`A(z) ${listNumber}. számú listára mentettük az alábbi új elemet:\n${message}`)
+            return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
+        }
+    }
 
 
 }
