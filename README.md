@@ -24,7 +24,7 @@ Például: node app.js -l -2
          > Kilistázza a második Todo-listát <
 
 
-##  -a           Új feladatot ad hozzá 
+#  -a           ##Új feladatot ad hozzá 
 
 Harmadik 'string' argumentum használata:
 
@@ -38,7 +38,7 @@ Például: node app.js -a -2 "Ez az új feladat"
          > "Ez az új feladat" tartalmú bejegyzés hozzáadása a második számú Todo-listához <
 
 
-##  -r           Eltávolít egy feladatot 
+#  -r           ##Eltávolít egy feladatot 
 
 Harmadik 'number' argumentum használata:
         Feladat eltávolításakor harmadik argumentumként adjuk meg törlendő feladatot.
