@@ -55,36 +55,21 @@ export default class Operations {
     changeItemStatusToDone(listNumber = 1, argNumberWeGot) {
         let indexOfChangedItem = argNumberWeGot * -1 - 1;
         let currentTodoListArr = JSON.parse(this.list[listNumber])
-        console.log(indexOfChangedItem);
-        // console.log(currentTodoListArr[indexOfChangedItem].length);
-        console.log(currentTodoListArr.length);
         if (currentTodoListArr.length == 0) {
             return console.log("A lista, amin módosítani szeretnél, üres!")
+
         } else if (currentTodoListArr.length >= indexOfChangedItem && indexOfChangedItem >= 0) {
             if (currentTodoListArr[indexOfChangedItem].length > 1) {
                 return console.log(`Az ${listNumber}. Todo listán, a megadott ${indexOfChangedItem + 1}. sorszámú feladat már elvégzett státuszban van!\nNézd: ${indexOfChangedItem + 1}. ${currentTodoListArr[indexOfChangedItem]}`)
-
             } else {
-
-                if (indexOfChangedItem >= 0 && indexOfChangedItem < currentTodoListArr.length) {
-                    currentTodoListArr[indexOfChangedItem].push(true);
-                    let updatedRawTodoList = JSON.stringify(currentTodoListArr);
-                    console.log(`A(z) ${listNumber}. számú listán módosítottuk a(z) ${indexOfChangedItem + 1}.számú elem státuszát, amely az alábbi:\n ${indexOfChangedItem + 1}. ${currentTodoListArr[indexOfChangedItem]}`)
-                    return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
-                } else {
-                    console.log(`Nem található a megadott sorszámmal ellátott elem.\nA megadott Todo-listán jelenleg ${currentTodoListArr.length} db lista-elem található.`)
-                }
+                currentTodoListArr[indexOfChangedItem].push(true);
+                let updatedRawTodoList = JSON.stringify(currentTodoListArr);
+                console.log(`A(z) ${listNumber}. számú listán módosítottuk a(z) ${indexOfChangedItem + 1}.számú elem státuszát, amely az alábbi:\n ${indexOfChangedItem + 1}. ${currentTodoListArr[indexOfChangedItem]}`)
+                return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
             }
+
         } else {
-            return console.log("A megadott sorszám nem tartozik egyetlen listaelemhez sem!")
-
-
-
-
-
-
-
-
+            return console.log(`A megadott ${indexOfChangedItem + 1}. sorszám nem tartozik egyetlen listaelemhez sem a ${listNumber}.Todo-listán\nA megadott Todo-listán jelenleg ${currentTodoListArr.length} db lista-elem található.!`)
         }
     }
 
