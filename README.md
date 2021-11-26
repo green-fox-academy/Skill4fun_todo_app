@@ -28,12 +28,12 @@ Például: node app.js -l -2
 
 Harmadik 'string' argumentum használata:
 
-        Új feladat hozzáadásakor harmadik argumentumként " " -között adjuk meg rögzítendő feladatot.
+        Új feladat hozzáadásakor harmadik argumentumként adjuk meg rögzítendő feladatot.
 
          > Amennyiben második argumentumként adjuk meg a rögzítendő feladatot, 
             alapértelmezetten az első Todo-listára fog rögzülni!
 
-Például: node app.js -a -2 "Ez az új feladat"
+Például: node app.js -a -2 Ez az új feladat
 
          > "Ez az új feladat" tartalmú bejegyzés hozzáadása a második számú Todo-listához <
 

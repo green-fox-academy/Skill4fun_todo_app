@@ -52,6 +52,7 @@ export default class Operations {
         }
     }
 
+
     changeItemStatusToDone(listNumber = 1, argNumberWeGot) {
         let indexOfChangedItem = argNumberWeGot * -1 - 1;
         let currentTodoListArr = JSON.parse(this.list[listNumber])
@@ -72,24 +73,6 @@ export default class Operations {
             return console.log(`A megadott ${indexOfChangedItem + 1}. sorszám nem tartozik egyetlen listaelemhez sem a ${listNumber}.Todo-listán\nA megadott Todo-listán jelenleg ${currentTodoListArr.length} db lista-elem található.!`)
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     removeItemFromAList(listNumber = 1, argNumberWeGot) {
