@@ -53,7 +53,7 @@ export default class Operations {
 
         } else {
             let currentTodoListArr = JSON.parse(this.list[listNumber])
-            if (itemNumber * -1 - 1 > 0 && itemNumber * -1 - 1 < currentTodoListArr.length) {
+            if (itemNumber * -1 - 1 >= 0 && itemNumber * -1 - 1 < currentTodoListArr.length) {
                 removedItem = currentTodoListArr.splice(itemNumber * -1 - 1, 1)
                 let updatedRawTodoList = JSON.stringify(currentTodoListArr);
                 console.log(`A(z) ${listNumber}. számú listáról töröltük az alábbi elemet:\n${removedItem}`)
