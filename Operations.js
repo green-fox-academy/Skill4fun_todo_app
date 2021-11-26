@@ -7,11 +7,22 @@ export default class Operations {
     // #rawtodoList = fs.readFileSync('./data/todos.json', 'utf-8')
     #userGuide = fs.readFileSync('help.txt', 'utf-8')
 
+    printHelp() {
+        return console.log(this.#userGuide);
+    }
+
+
+    printWarnUnsupportedArg() {
+        return console.log("Nem támogatott argumentum!\nKérjük olvassa el az alábbi használati utasítást:\n");
+    }
+
+
     checkListEmpty(listNumber = 1) {
         if (this.list[listNumber].length == 0 || this.list[listNumber] == '[]') {
             return console.log("\n Ezen a listán nincs több feladatod mára.")
         }
     }
+
 
     printOrderedTodoList(listNumber = 1) {
         if (this.list[listNumber].length != 0) {
@@ -23,43 +34,57 @@ export default class Operations {
         }
     }
 
-    printHelp() {
-        return console.log(this.#userGuide);
-    }
-    printWarnUnsupportedArg() {
-        return console.log("Nem támogatott argumentum!\nKérjük olvassa el az alábbi használati utasítást:\n");
-    }
-
 
     writeNewItemtoAList(listNumber = 1, message) {
         if (this.list[listNumber].length == 0) {
             let currentTodoListArr = [];
-            currentTodoListArr.push(message)
+            currentTodoListArr.push([message])
             let updatedRawTodoList = JSON.stringify(currentTodoListArr);
             console.log(`A(z) ${listNumber}. számú listára mentettük az alábbi új elemet:\n${message}`)
-            return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
+            return fs.writeFileSync(`./data/todos${listNumber}.json`, `[${updatedRawTodoList}]`)
 
         } else {
             let currentTodoListArr = JSON.parse(this.list[listNumber]);
-            currentTodoListArr.push(message)
+            currentTodoListArr.push([message])
             let updatedRawTodoList = JSON.stringify(currentTodoListArr);
             console.log(`A(z) ${listNumber}. számú listára mentettük az alábbi új elemet:\n${message}`)
             return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
         }
     }
 
+    changeItemStatusToDone(listNumber = 1, argNumberWeGot) {
+        let indexOfChangedItem = argNumberWeGot * -1 - 1;
+        let currentTodoListArr = JSON.parse(this.list[listNumber])
+        if (currentTodoListArr.length == 0) {
+            return console.log("A lista, amin módosítani szeretnél, üres!")
+        } else if (currentTodoListArr[indexOfChangedItem].length > 1) {
+            return console.log(`A megadott ${indexOfChangedItem}sorszámmal ellátott feladat már elvégzett státuszban van!\nNézd: ${indexOfChangedItem + 1}. ${currentTodoListArr[indexOfChangedItem]}`)
 
-    removeItemFromAList(listNumber = 1, itemNumber) {
-        let removedItem = '';
+        } else {
+            if (indexOfChangedItem >= 0 && indexOfChangedItem < currentTodoListArr.length) {
+                currentTodoListArr[indexOfChangedItem].push(true);
+                let updatedRawTodoList = JSON.stringify(currentTodoListArr);
+                console.log(`A(z) ${listNumber}. számú listán módosítottuk a(z) ${indexOfChangedItem + 1}.számú elem státuszát, amely az alábbi:\n ${indexOfChangedItem + 1}. ${currentTodoListArr[indexOfChangedItem]}`)
+                return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
+            } else {
+                console.log(`Nem található a megadott sorszámmal ellátott elem.\nA megadott Todo-listán jelenleg ${currentTodoListArr.length} db lista-elem található.`)
+            }
+        }
+    }
+
+
+    removeItemFromAList(listNumber = 1, argNumberWeGot) {
+        let indexOfRemovedItem = argNumberWeGot * -1 - 1;
+        let currentTodoListArr = JSON.parse(this.list[listNumber])
+        let removedItemContainer = '';
         if (this.list[listNumber].length == 0) {
             return console.log("A lista, amiről törölni szeretnél, üres!")
 
         } else {
-            let currentTodoListArr = JSON.parse(this.list[listNumber])
-            if (itemNumber * -1 - 1 >= 0 && itemNumber * -1 - 1 < currentTodoListArr.length) {
-                removedItem = currentTodoListArr.splice(itemNumber * -1 - 1, 1)
+            if (indexOfRemovedItem >= 0 && indexOfRemovedItem < currentTodoListArr.length) {
+                removedItemContainer = currentTodoListArr.splice(indexOfRemovedItem, 1)
                 let updatedRawTodoList = JSON.stringify(currentTodoListArr);
-                console.log(`A(z) ${listNumber}. számú listáról töröltük az alábbi elemet:\n${removedItem}`)
+                console.log(`A(z) ${listNumber}. számú listáról töröltük az alábbi elemet:\n${removedItemContainer}`)
                 return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
 
             } else {
@@ -68,10 +93,8 @@ export default class Operations {
         }
 
     }
+
 }
-
-
-
 /*
 const json = '{"result":true, "count":42}';
 const obj = JSON.parse(json);

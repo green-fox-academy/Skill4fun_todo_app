@@ -5,6 +5,7 @@ const numberOfLists = Object.entries(todoListContainer).length;
 const myTodoList = new Operations;
 let newItemContent = '';
 let indexOfItemToRemove = '';
+let indexOfItemToChange = '';
 
 const args = process.argv.slice(2);
 let argNumber = 1;
@@ -32,6 +33,15 @@ function chooseList(listNumber = 1) {
                 indexOfItemToRemove = args[2];
             }
             myTodoList.removeItemFromAList(listNumber, indexOfItemToRemove);
+
+        } else if (args.includes("-c")) {
+            if (args[2] == null) {
+                indexOfItemToChange = args[1];
+            } else {
+                indexOfItemToChange = args[2];
+            }
+            myTodoList.changeItemStatusToDone(listNumber, indexOfItemToChange);
+
         } else {
             myTodoList.printWarnUnsupportedArg();
             myTodoList.printHelp();
