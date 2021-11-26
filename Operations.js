@@ -26,7 +26,6 @@ export default class Operations {
 
     printOrderedTodoList(listNumber = 1) {
         let todoListArr = JSON.parse(this.list[listNumber])
-        console.log(todoListArr[1][1]);
         if (todoListArr.length != 0) {
             for (let i = 0; i < todoListArr.length; i++) {
                 if (todoListArr[i][1] == true) {
