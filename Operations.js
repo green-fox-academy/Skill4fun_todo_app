@@ -60,7 +60,7 @@ export default class Operations {
                 return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
 
             } else {
-                console.log(`Nem található elem a megadott sorszámmal ellátott elem.\nA megadott jelenleg ${currentTodoListArr.length} db lista-elem található.`)
+                console.log(`Nem található a megadott sorszámmal ellátott elem.\nA megadott Todo-listán jelenleg ${currentTodoListArr.length} db lista-elem található.`)
             }
         }
 
