@@ -10,27 +10,32 @@ const args = process.argv.slice(2);
 let argNumber = 1;
 
 function chooseList(listNumber = 1) {
-    if (args.includes("-l")) {
-        myTodoList.checkListEmpty(listNumber);
-        myTodoList.printOrderedTodoList(listNumber);
-
-    } else if (args.includes("-a")) {
-        if (args[2] == null) {
-            newItemContent = args[1]
-        } else {
-            newItemContent = args[2];
-        }
-        myTodoList.writeNewItemtoAList(listNumber, newItemContent);
-
-    } else if (args.includes("-r")) {
-        if (args[2] == null) {
-            indexOfItemToRemove = args[1];
-        } else {
-            indexOfItemToRemove = args[2];
-        }
-        myTodoList.removeItemFromAList(listNumber, indexOfItemToRemove);
-    } else {
+    if (args.length == 0) {
         myTodoList.printHelp();
+    } else {
+        if (args.includes("-l")) {
+            myTodoList.checkListEmpty(listNumber);
+            myTodoList.printOrderedTodoList(listNumber);
+
+        } else if (args.includes("-a")) {
+            if (args[2] == null) {
+                newItemContent = args[1]
+            } else {
+                newItemContent = args[2];
+            }
+            myTodoList.writeNewItemtoAList(listNumber, newItemContent);
+
+        } else if (args.includes("-r")) {
+            if (args[2] == null) {
+                indexOfItemToRemove = args[1];
+            } else {
+                indexOfItemToRemove = args[2];
+            }
+            myTodoList.removeItemFromAList(listNumber, indexOfItemToRemove);
+        } else {
+            myTodoList.printWarnUnsupportedArg();
+            myTodoList.printHelp();
+        }
     }
 }
 

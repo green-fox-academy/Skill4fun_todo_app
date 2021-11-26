@@ -26,6 +26,9 @@ export default class Operations {
     printHelp() {
         return console.log(this.#userGuide);
     }
+    printWarnUnsupportedArg() {
+        return console.log("Nem támogatott argumentum!\nKérjük olvassa el az alábbi használati utasítást:\n");
+    }
 
 
     writeNewItemtoAList(listNumber = 1, message) {
