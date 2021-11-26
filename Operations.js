@@ -8,7 +8,7 @@ export default class Operations {
     #userGuide = fs.readFileSync('help.txt', 'utf-8')
 
     checkListEmpty(listNumber = 1) {
-        if (this.list[listNumber].length == 0) {
+        if (this.list[listNumber].length == 0 || this.list[listNumber] == '[]') {
             return console.log("\n Ezen a listán nincs több feladatod mára.")
         }
     }

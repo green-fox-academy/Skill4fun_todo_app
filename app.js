@@ -11,8 +11,8 @@ let argNumber = 1;
 
 function chooseList(listNumber = 1) {
     if (args.includes("-l")) {
-        myTodoList.printOrderedTodoList(listNumber);
         myTodoList.checkListEmpty(listNumber);
+        myTodoList.printOrderedTodoList(listNumber);
 
     } else if (args.includes("-a")) {
         if (args[2] == null) {
