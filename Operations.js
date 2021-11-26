@@ -22,13 +22,18 @@ export default class Operations {
             return console.log("\n Ezen a listán nincs több feladatod mára.")
         }
     }
-
+    ///// innentől
 
     printOrderedTodoList(listNumber = 1) {
         let todoListArr = JSON.parse(this.list[listNumber])
-        if (this.list[listNumber].length != 0) {
+        console.log(todoListArr[1][1]);
+        if (todoListArr.length != 0) {
             for (let i = 0; i < todoListArr.length; i++) {
-                todoListArr[i] = `${i + 1} - [ ] ${todoListArr[i]}`;
+                if (todoListArr[i][1] == true) {
+                    todoListArr[i] = `${i + 1} - [X] ${todoListArr[i][0]}`;
+                } else {
+                    todoListArr[i] = `${i + 1} - [ ] ${todoListArr[i][0]}`;
+                }
             }
             return console.log(`A(z) ${listNumber}. számú Todo lista elemei:\n${todoListArr.join("\n")}`)
         }
@@ -65,7 +70,7 @@ export default class Operations {
             } else {
                 currentTodoListArr[indexOfChangedItem].push(true);
                 let updatedRawTodoList = JSON.stringify(currentTodoListArr);
-                console.log(`A(z) ${listNumber}. számú listán módosítottuk a(z) ${indexOfChangedItem + 1}.számú elem státuszát, amely az alábbi:\n ${indexOfChangedItem + 1}. ${currentTodoListArr[indexOfChangedItem]}`)
+                console.log(`A(z) ${listNumber}. számú listán módosítottuk a(z) ${indexOfChangedItem + 1}.számú elem státuszát, amely az alábbi:\n ${indexOfChangedItem + 1} - [X] ${currentTodoListArr[indexOfChangedItem][0]}`)
                 return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
             }
 
