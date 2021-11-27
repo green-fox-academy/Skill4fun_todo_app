@@ -58,7 +58,8 @@ Harmadik 'number' argumentum használata:
 
         Egy teljesített feladat státuszának módosításához, harmadik argumentumként adjuk meg a választott feladat (lista-elem) sorszámát.
 
-         > Amennyiben második argumentumként nem adjuk meg a Todo-lista sorszámát, vagy nem létező sorszámot állítunk be, alapértelmezetten az első Todo-listáról keresünk rá a feladatra!
+         > Amennyiben második argumentumként nem adjuk meg a Todo-lista sorszámát, vagy nem létező
+          sorszámot állítunk be, alapértelmezetten az első Todo-listáról keresünk rá a feladatra!
 
 Például: node app.js -c -2 -5
 
