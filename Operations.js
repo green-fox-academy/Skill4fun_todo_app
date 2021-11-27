@@ -73,7 +73,7 @@ export default class Operations {
             }
 
         } else {
-            return console.log(`A megadott ${indexOfChangedItem + 1}. sorszám nem tartozik egyetlen listaelemhez sem a ${listNumber}.Todo-listán\nA megadott Todo-listán jelenleg ${currentTodoListArr.length} db lista-elem található!`)
+            return console.log(`A megadott ${indexOfChangedItem + 1}. sorszám nem tartozik egyetlen listaelemhez sem a ${listNumber}.Todo-listán\nEzen a listán jelenleg ${currentTodoListArr.length} db lista-elem található!`)
         }
     }
 
@@ -93,7 +93,7 @@ export default class Operations {
                 return fs.writeFileSync(`./data/todos${listNumber}.json`, updatedRawTodoList)
 
             } else {
-                console.log(`Az ${listNumber}. Todo-listán nem található a megadott ${indexOfRemovedItem + 1}. sorszámmal ellátott lista-elem.\nItt jelenleg ${currentTodoListArr.length} db lista-elem található!`)
+                console.log(`Az ${listNumber}. Todo-listán nem található a megadott ${indexOfRemovedItem + 1}. sorszámmal ellátott lista-elem.\nEzen a listán jelenleg ${currentTodoListArr.length} db lista-elem található!`)
             }
         }
 
