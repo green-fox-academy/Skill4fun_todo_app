@@ -50,3 +50,16 @@ Harmadik 'number' argumentum használata:
 Például: node app.js -r -2 -5
 
          > Az ötödik sorszámú feladat törlése a második számú Todo-listáról <
+
+
+##  -c   Teljesít egy feladatot 
+
+Harmadik 'number' argumentum használata:
+
+        Egy teljesített feladat státuszának módosításához, harmadik argumentumként adjuk meg a választott feladat (lista-elem) sorszámát.
+
+         > Amennyiben második argumentumként nem adjuk meg a Todo-lista sorszámát, vagy nem létező sorszámot állítunk be, alapértelmezetten az első Todo-listáról keresünk rá a feladatra!
+
+Például: node app.js -c -2 -5
+
+         > A második számú Todo-lista, ötödik feladatának módosítása TELJESÍTETT státuszúra (5 - [X] példa ) <
