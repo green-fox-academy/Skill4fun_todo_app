@@ -51,7 +51,7 @@ function chooseList(listNumber = 1) {
 
 
 function isSecondNumberArgAdded() {
-    if (args.length > 1 && args[1] % 1 == 0) {
+    if (args.length > 1 && args[1] % 1 == 0 && args[1] != 0) {
         if (parseInt(args[1].slice(1)) <= numberOfLists) {
             argNumber = parseInt(args[1].slice(1));
         } else { console.log(`\nNem létező listát keresel, túl nagy számot adtál meg második argumentumként! \nAktuális ToDo-listák száma: ${numberOfLists} \n`) }
